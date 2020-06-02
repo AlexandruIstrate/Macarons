@@ -18,15 +18,21 @@
     <ClInclude Include="src\Macarons.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Macarons\Test.h">
+    <ClInclude Include="src\mrpch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Macarons\Core.h">
+    <ClInclude Include="src\Macarons\Core\Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Core\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Macarons\Test.cpp">
+    <ClCompile Include="src\mrpch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Core\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

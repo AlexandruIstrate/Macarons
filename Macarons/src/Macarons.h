@@ -1,5 +1,5 @@
 #pragma once
 
-#include "Macarons/Core.h"
+#include "Macarons/Core/Base.h"
 
-#include "Macarons/Test.h"
+#include "Macarons/Core/Log.h"

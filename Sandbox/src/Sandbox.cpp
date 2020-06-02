@@ -2,6 +2,8 @@
 
 int main()
 {
-	Macarons::Test test;
-	test.PrintMessage();
+	// TODO: Move to the core
+	Macarons::Log::Init();
+
+	MR_INFO("Hello World!");
 }

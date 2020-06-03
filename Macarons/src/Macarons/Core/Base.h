@@ -1,11 +1,10 @@
 #pragma once
 
-#ifdef MR_PLATFORM_WINDOWS
-	#ifdef MR_BUILD_DLL
-		#define MACARONS_API __declspec(dllexport)
+#ifdef __WIN32
+	#if __WIN64
+		#define MR_PLATFORM_WINDOWS
 	#else
-		#define MACARONS_API __declspec(dllimport)
+		#error "x86 Builds are not supported!"
 	#endif
-#else
-	#error Platform not supported!
 #endif
+

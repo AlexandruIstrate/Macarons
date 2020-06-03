@@ -37,7 +37,6 @@
 *.app
 
 # Output directories
-bin/
 bin-int/
 
 ### Windows ###
@@ -410,4 +409,6 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,windows,visualstudio
-/Macarons/vendor
+
+# Exclusions
+!vendor/*

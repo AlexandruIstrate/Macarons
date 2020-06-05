@@ -16,6 +16,15 @@ workspace "Macarons"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["libgit2"] = "Macarons/vendor/libgit2/include"
+
+group "Dependencies"
+	include "Macarons/vendor/libgit2"
+
+group ""
+
 project "Macarons"
     location "Macarons"
     kind "Staticlib"
@@ -38,7 +47,13 @@ project "Macarons"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.libgit2}"
+    }
+
+    links
+    {
+        "libgit2"
     }
 
     filter "system:windows"

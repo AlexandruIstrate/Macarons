@@ -40,15 +40,15 @@ MessageBox(
 ### Generated header
 
 ```cpp
-    // Macarons.h
-    #pragma once
+// Macarons.h
+#pragma once
 
-    #define MACARONS_VER_LONG   "1.3.5 beta2"
-    #define MACARONS_VER_SHORT  "1.3.5"
+#define MACARONS_VER_LONG   "1.3.5 beta2"
+#define MACARONS_VER_SHORT  "1.3.5"
 
-    #define MACARONS_VER_MAJOR  1
-    #define MACARONS_VER_MINOR  3
-    #define MACARONS_VER_PATCH  5
+#define MACARONS_VER_MAJOR  1
+#define MACARONS_VER_MINOR  3
+#define MACARONS_VER_PATCH  5
 ```
 
 ## Getting Started

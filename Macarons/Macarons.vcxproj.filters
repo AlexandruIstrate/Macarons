@@ -7,6 +7,9 @@
     <Filter Include="Macarons\Core">
       <UniqueIdentifier>{F1C7D866-5D88-549D-26C3-9D1A92429979}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Macarons\Versioning">
+      <UniqueIdentifier>{8C4F4518-F8B0-2226-811E-69D8ED7E59E5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Macarons.h" />
@@ -16,11 +19,23 @@
     <ClInclude Include="src\Macarons\Core\Log.h">
       <Filter>Macarons\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Macarons\Versioning\Branch.h">
+      <Filter>Macarons\Versioning</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Versioning\Repository.h">
+      <Filter>Macarons\Versioning</Filter>
+    </ClInclude>
     <ClInclude Include="src\mrpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Macarons\Core\Log.cpp">
       <Filter>Macarons\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Versioning\Branch.cpp">
+      <Filter>Macarons\Versioning</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Versioning\Repository.cpp">
+      <Filter>Macarons\Versioning</Filter>
     </ClCompile>
     <ClCompile Include="src\mrpch.cpp" />
   </ItemGroup>

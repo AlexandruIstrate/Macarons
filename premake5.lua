@@ -17,8 +17,8 @@ workspace "Macarons"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
-IncludeDir = {}
-IncludeDir["libgit2"] = "Macarons/vendor/libgit2/include"
+-- IncludeDir = {}
+-- IncludeDir["libgit2"] = "Macarons/vendor/libgit2/include"
 
 group "Dependencies"
 	include "Macarons/vendor/libgit2"
@@ -48,7 +48,7 @@ project "Macarons"
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.libgit2}"
+        "%{prj.name}/vendor/libgit2/include"
     }
 
     links

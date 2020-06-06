@@ -35,9 +35,9 @@ namespace Macarons
 
 	const Branch& Repository::GetActiveBranch() const
 	{
+		// TODO: Fix this
 		Branch b("Test");
 		return b;
-		// TODO: insert return statement here
 	}
 
 	void Repository::Init()

@@ -9,10 +9,8 @@ namespace Macarons
 	private:
 		friend class Repository;
 
-	private:
-		Branch(const std::string& name);
-
 	public:
+		Branch(const std::string& name);
 		Branch(const Branch&) = delete;
 
 		inline const std::string& GetName() const { return m_Name; }

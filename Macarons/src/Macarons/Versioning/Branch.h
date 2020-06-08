@@ -1,25 +1,28 @@
 #pragma once
 
-#include "mrpch.h"
+#include "Reference.h"
+
+//enum git_branch_t;
 
 namespace Macarons
 {
-	class Branch
+	enum class BranchType : unsigned int
 	{
-	private:
-		friend class Repository;
+		Local = 1,
+		Remote,
+		All = Local | Remote
+	};
 
+	class Branch : public Reference
+	{
 	public:
-		Branch(const std::string& name);
-		Branch(const Branch&) = delete;
+		Branch(git_reference* ref);
 
-		inline const std::string& GetName() const { return m_Name; }
+		bool IsActiveBranch() const;
+		bool IsTrackingRemote() const;
 
-		void GetCommits();
-		void GetLatestCommit();
-		int GetCommitCount();
+		Branch GetRemote() const;
 
-	private:
-		std::string m_Name;
+		void CreateCommit(const std::string& author, const std::string& message);
 	};
 }

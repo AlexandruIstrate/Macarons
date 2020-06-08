@@ -1,22 +1,27 @@
 #include "mrpch.h"
 #include "Branch.h"
 
+#include <git2.h>
+
 namespace Macarons
 {
-	Branch::Branch(const std::string& name) : m_Name{ name }
+	Branch::Branch(git_reference* ref) : Reference{ref}
 	{
+		
 	}
 
-	void Branch::GetCommits()
+	bool Branch::IsActiveBranch() const
 	{
+		return git_branch_is_head(m_Reference);
 	}
 
-	void Branch::GetLatestCommit()
+	bool Branch::IsTrackingRemote() const
 	{
+		return false;
 	}
 
-	int Branch::GetCommitCount()
+	Branch Branch::GetRemote() const
 	{
-		return 0;
+		return Branch(nullptr);
 	}
 }

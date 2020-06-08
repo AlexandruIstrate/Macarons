@@ -19,24 +19,18 @@
     <ClInclude Include="src\Macarons\Core\Log.h">
       <Filter>Macarons\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Macarons\Versioning\Branch.h">
-      <Filter>Macarons\Versioning</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Macarons\Versioning\Repository.h">
-      <Filter>Macarons\Versioning</Filter>
-    </ClInclude>
     <ClInclude Include="src\mrpch.h" />
+    <ClInclude Include="src\Macarons\Versioning\Reference.h" />
+    <ClInclude Include="src\Macarons\Versioning\Repository.h" />
+    <ClInclude Include="src\Macarons\Versioning\Branch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Macarons\Core\Log.cpp">
       <Filter>Macarons\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Macarons\Versioning\Branch.cpp">
-      <Filter>Macarons\Versioning</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Macarons\Versioning\Repository.cpp">
-      <Filter>Macarons\Versioning</Filter>
-    </ClCompile>
     <ClCompile Include="src\mrpch.cpp" />
+    <ClCompile Include="src\Macarons\Versioning\Reference.cpp" />
+    <ClCompile Include="src\Macarons\Versioning\Repository.cpp" />
+    <ClCompile Include="src\Macarons\Versioning\Branch.cpp" />
   </ItemGroup>
 </Project>

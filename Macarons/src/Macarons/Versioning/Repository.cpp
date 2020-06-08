@@ -5,57 +5,96 @@
 
 namespace Macarons
 {
-	Repository::Repository(const std::string& path) : m_Path{ path }
+	Repository::Repository(const std::string& path) : m_Repo{ nullptr }
 	{
-		Init();
+		Init(path);
 	}
 
-	std::vector<Branch> Repository::GetBranches() const
+	Repository::~Repository()
 	{
-		std::vector<Branch> result;
+		git_repository_free(m_Repo);
+
+		// Shutdown the library
+		git_libgit2_shutdown();
+	}
+
+	std::string Repository::GetPath() const
+	{
+		return git_repository_path(m_Repo);
+	}
+
+	std::string Repository::GetWorkingDirectory() const
+	{
+		return git_repository_workdir(m_Repo);
+	}
+
+	std::vector<Branch> Repository::GetBranches(BranchType branchType) const
+	{
+		std::vector<Branch> res;
 
 		git_branch_iterator* it;
 
-		if (!git_branch_iterator_new(&it, m_Repository, GIT_BRANCH_LOCAL))
+		if (!git_branch_iterator_new(&it, m_Repo, GIT_BRANCH_LOCAL))
 		{
 			git_reference* ref;
 			git_branch_t type;
 
 			while (!git_branch_next(&ref, &type, it))
 			{
-				//result.push_back(Branch());
-				git_reference_free(ref);
+				res.push_back(Branch(ref));
 			}
 
 			git_branch_iterator_free(it);
 		}
 
-		return result;
+		return res;
 	}
 
-	const Branch& Repository::GetActiveBranch() const
+	Macarons::Branch Repository::GetActiveBranch() const
 	{
-		// TODO: Fix this
-		Branch b("Test");
-		return b;
+		git_branch_iterator* it;
+
+		if (!git_branch_iterator_new(&it, m_Repo, GIT_BRANCH_LOCAL))
+		{
+			git_reference* ref;
+			git_branch_t type;
+
+			while (!git_branch_next(&ref, &type, it))
+			{
+				// Check if the branch is the current HEAD.
+				if (git_branch_is_head(ref))
+				{
+					git_branch_iterator_free(it);
+					return Branch(ref);
+				}
+			}
+
+			git_branch_iterator_free(it);
+		}
+
+		MR_ASSERT(false, "Could not retrieve HEAD branch");
 	}
 
-	void Repository::Init()
+	Branch Repository::CreateBranch(const std::string& name)
+	{
+		git_reference* ref;
+
+		int error = git_branch_create(&ref, m_Repo, name.c_str(), nullptr, false);
+		MR_ASSERT(error == GIT_ERROR_NONE, "Could not create branch");
+
+		return Branch(ref);
+	}
+
+	void Repository::DeleteBranch(const std::string& name)
+	{
+	}
+
+	void Repository::Init(const std::string& path)
 	{
 		// Initialize the library
 		git_libgit2_init();
 
-		// Initialize the repository
-		int result = git_repository_open(&m_Repository, m_Path.c_str());
-		MR_CORE_ASSERT(result, "Cannot open repository")
-	}
-
-	void Repository::Shutdown()
-	{
-		// Release the repository
-		git_repository_free(m_Repository);
-
-		// Shutdown the library
-		git_libgit2_shutdown();
+		int error = git_repository_open(&m_Repo, path.c_str());
+		MR_ASSERT(error == GIT_ERROR_NONE, "Could not open repository");
 	}
 }

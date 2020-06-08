@@ -2,11 +2,15 @@
 
 int main()
 {
+	using namespace Macarons;
+
 	// TODO: Move to the core
-	Macarons::Log::Init();
+	Log::Init();
 
-	Macarons::Repository r("D:\\Projects\\C++\\Macarons\\.git");
-	//r.GetBranches();
-
-	MR_INFO("Hello World!");
+	Repository repo("Some path");
+	
+	for (const Branch& branch : repo.GetBranches(BranchType::All))
+	{
+		MR_INFO("Branch is {0}", branch.GetName());
+	}
 }

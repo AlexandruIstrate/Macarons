@@ -5,6 +5,21 @@
 
 namespace Macarons
 {
+	BranchType GetBranchType(git_branch_t type)
+	{
+		switch (type)
+		{
+		case GIT_BRANCH_LOCAL:
+			return BranchType::Local;
+
+		case GIT_BRANCH_REMOTE:
+			return BranchType::Remote;
+
+		default:
+			MR_CORE_ASSERT(false, "Unsuported branch type")
+		}
+	}
+
 	Repository::Repository(const std::string& path) : m_Repo{ nullptr }
 	{
 		Init(path);
@@ -41,7 +56,7 @@ namespace Macarons
 
 			while (!git_branch_next(&ref, &type, it))
 			{
-				res.push_back(Branch(ref));
+				res.push_back(Branch(ref, GetBranchType(type), *this));
 			}
 
 			git_branch_iterator_free(it);
@@ -65,7 +80,7 @@ namespace Macarons
 				if (git_branch_is_head(ref))
 				{
 					git_branch_iterator_free(it);
-					return Branch(ref);
+					return Branch(ref, GetBranchType(type), *this);
 				}
 			}
 
@@ -82,11 +97,13 @@ namespace Macarons
 		int error = git_branch_create(&ref, m_Repo, name.c_str(), nullptr, false);
 		MR_ASSERT(error == GIT_ERROR_NONE, "Could not create branch");
 
-		return Branch(ref);
+		return Branch(ref, BranchType::Local, *this);
 	}
 
-	void Repository::DeleteBranch(const std::string& name)
+	void Repository::DeleteBranch(const Branch& branch)
 	{
+		int error = git_branch_delete(branch.m_Reference);
+		MR_ASSERT(error == GIT_ERROR_NONE, "Could not delete branch");
 	}
 
 	void Repository::Init(const std::string& path)

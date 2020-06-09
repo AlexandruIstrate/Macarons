@@ -23,6 +23,7 @@
     <ClInclude Include="src\Macarons\Versioning\Reference.h" />
     <ClInclude Include="src\Macarons\Versioning\Repository.h" />
     <ClInclude Include="src\Macarons\Versioning\Branch.h" />
+    <ClInclude Include="src\Macarons\Versioning\Commit.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Macarons\Core\Log.cpp">
@@ -32,5 +33,6 @@
     <ClCompile Include="src\Macarons\Versioning\Reference.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Repository.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Branch.cpp" />
+    <ClCompile Include="src\Macarons\Versioning\Commit.cpp" />
   </ItemGroup>
 </Project>

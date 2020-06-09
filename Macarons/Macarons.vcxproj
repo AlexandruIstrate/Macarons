@@ -139,6 +139,7 @@
     <ClInclude Include="src\Macarons\Core\Base.h" />
     <ClInclude Include="src\Macarons\Core\Log.h" />
     <ClInclude Include="src\Macarons\Versioning\Branch.h" />
+    <ClInclude Include="src\Macarons\Versioning\Commit.h" />
     <ClInclude Include="src\Macarons\Versioning\Reference.h" />
     <ClInclude Include="src\Macarons\Versioning\Repository.h" />
     <ClInclude Include="src\mrpch.h" />
@@ -146,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="src\Macarons\Core\Log.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Branch.cpp" />
+    <ClCompile Include="src\Macarons\Versioning\Commit.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Reference.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Repository.cpp" />
     <ClCompile Include="src\mrpch.cpp">

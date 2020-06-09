@@ -7,3 +7,4 @@
 #include "Macarons/Versioning/Repository.h"
 #include "Macarons/Versioning/Reference.h"
 #include "Macarons/Versioning/Branch.h"
+#include "Macarons/Versioning/Commit.h"

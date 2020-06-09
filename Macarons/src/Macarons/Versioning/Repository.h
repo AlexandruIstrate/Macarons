@@ -9,6 +9,9 @@ namespace Macarons
 {
 	class Repository
 	{
+	private:
+		friend class Branch;
+
 	public:
 		Repository(const std::string& path);
 		~Repository();
@@ -19,7 +22,7 @@ namespace Macarons
 		std::vector<Branch> GetBranches(BranchType branchType) const;
 		Branch GetActiveBranch() const;
 		Branch CreateBranch(const std::string& name);
-		void DeleteBranch(const std::string& name);
+		void DeleteBranch(const Branch& branch);
 
 	private:
 		void Init(const std::string& path);

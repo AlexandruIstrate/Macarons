@@ -2,27 +2,45 @@
 
 #include "Reference.h"
 
-//enum git_branch_t;
-
 namespace Macarons
 {
+	class Commit;
+
 	enum class BranchType : unsigned int
 	{
-		Local = 1,
-		Remote,
-		All = Local | Remote
+		Local,
+		Remote
+	};
+
+	struct GitUser
+	{
+		std::string Name;
+		std::string Email;
 	};
 
 	class Branch : public Reference
 	{
-	public:
-		Branch(git_reference* ref);
+	private:
+		friend class Repository;
 
-		bool IsActiveBranch() const;
+	private:
+		Branch(git_reference* ref, BranchType type, const Repository& repo);
+
+	public:
+		inline BranchType GetBranchType() const { return m_BranchType; }
+		inline const Repository& GetRepository() const { return m_Repository; }
+
+		bool IsActive() const;
 		bool IsTrackingRemote() const;
 
-		Branch GetRemote() const;
+		Branch GetUpstream() const;
+		void SetUpstream(const Branch& upstream);
 
-		void CreateCommit(const std::string& author, const std::string& message);
+		std::vector<Commit> GetCommits() const;
+		Commit CreateCommit(const GitUser& author, std::string& message);
+
+	private:
+		BranchType m_BranchType;
+		const Repository& m_Repository;
 	};
 }

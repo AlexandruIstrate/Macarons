@@ -30,4 +30,15 @@ namespace Macarons
 	private:
 		git_repository* m_Repo;
 	};
+
+	enum class GitObjectType
+	{
+		Invalid = 0,
+		Any,
+		Commit,
+		Tree,
+		Blob,
+		Tag,
+		Delta
+	};
 }

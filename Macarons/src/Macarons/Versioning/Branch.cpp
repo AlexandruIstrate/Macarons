@@ -101,7 +101,14 @@ namespace Macarons
 		/* Create the commit */
 		git_oid commitId;
 
-		error = git_commit_create(&commitId, m_Repository.m_Repo, "HEAD", user, user, "UTF-8", message.c_str(), tree, 1, &parent);
+		const git_commit* parents[] = { parent };
+
+		error = git_commit_create(&commitId, m_Repository.m_Repo, "HEAD", user, user, "UTF-8", message.c_str(), tree, 1, parents);
 		MR_CORE_ASSERT(error == GIT_ERROR_NONE, "Could not create commit");
+
+		git_commit* commit;
+		error = git_commit_lookup(&commit, m_Repository.m_Repo, &commitId);
+
+		return Commit(commit);
 	}
 }

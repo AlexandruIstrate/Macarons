@@ -142,6 +142,7 @@
     <ClInclude Include="src\Macarons\Versioning\Commit.h" />
     <ClInclude Include="src\Macarons\Versioning\Reference.h" />
     <ClInclude Include="src\Macarons\Versioning\Repository.h" />
+    <ClInclude Include="src\Macarons\Versioning\Tag.h" />
     <ClInclude Include="src\mrpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,7 @@
     <ClCompile Include="src\Macarons\Versioning\Commit.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Reference.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Repository.cpp" />
+    <ClCompile Include="src\Macarons\Versioning\Tag.cpp" />
     <ClCompile Include="src\mrpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

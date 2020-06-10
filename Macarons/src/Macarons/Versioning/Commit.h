@@ -3,6 +3,7 @@
 #include "mrpch.h"
 
 #include "Branch.h"
+#include "Tag.h"
 
 #include <chrono>
 
@@ -23,9 +24,13 @@ namespace Macarons
 		~Commit();
 
 		GitUser GetAuthor() const;
-		std::time_t GetCommitDate();
+		std::time_t GetCommitDate() const;
 		std::string GetMessage() const;
 		std::string GetSummary() const;
+
+		std::vector<Tag> GetTags() const;
+		Tag CreateTag(const std::string& name, const std::string& message, const GitUser& tagger);
+		void DeleteTag(const Tag& tag);
 
 	private:
 		git_commit* m_Commit;

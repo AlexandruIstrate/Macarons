@@ -6,7 +6,7 @@ namespace Macarons
 {
 	class Commit;
 
-	enum class BranchType : unsigned int
+	enum class BranchType
 	{
 		Local,
 		Remote
@@ -38,6 +38,8 @@ namespace Macarons
 
 		std::vector<Commit> GetCommits() const;
 		Commit CreateCommit(const GitUser& author, std::string& message);
+
+		void Reset(bool hard);
 
 	private:
 		BranchType m_BranchType;

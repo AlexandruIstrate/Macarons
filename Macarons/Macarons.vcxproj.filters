@@ -24,6 +24,7 @@
     <ClInclude Include="src\Macarons\Versioning\Repository.h" />
     <ClInclude Include="src\Macarons\Versioning\Branch.h" />
     <ClInclude Include="src\Macarons\Versioning\Commit.h" />
+    <ClInclude Include="src\Macarons\Versioning\Tag.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Macarons\Core\Log.cpp">
@@ -34,5 +35,6 @@
     <ClCompile Include="src\Macarons\Versioning\Repository.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Branch.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Commit.cpp" />
+    <ClCompile Include="src\Macarons\Versioning\Tag.cpp" />
   </ItemGroup>
 </Project>

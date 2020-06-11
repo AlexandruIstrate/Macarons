@@ -63,7 +63,7 @@ namespace Macarons
 			git_commit* commit;
 			git_commit_lookup(&commit, m_Repository.m_Repo, &oid);
 
-			result.push_back(Commit(commit));
+			result.push_back(Commit(commit, this));
 		}
 
 		git_revwalk_free(walk);
@@ -109,6 +109,10 @@ namespace Macarons
 		git_commit* commit;
 		error = git_commit_lookup(&commit, m_Repository.m_Repo, &commitId);
 
-		return Commit(commit);
+		/* Free resources */
+		git_tree_free(tree);
+		git_signature_free(user);
+
+		return Commit(commit, this);
 	}
 }

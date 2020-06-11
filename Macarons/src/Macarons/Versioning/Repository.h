@@ -11,6 +11,8 @@ namespace Macarons
 	{
 	private:
 		friend class Branch;
+		friend class Commit;
+		friend class Tag;
 
 	public:
 		Repository(const std::string& path);

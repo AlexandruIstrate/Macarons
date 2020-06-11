@@ -17,7 +17,7 @@ namespace Macarons
 		friend class Branch;
 
 	private:
-		Commit(git_commit* commit);
+		Commit(git_commit* commit, const Branch* branch);
 
 	public:
 		Commit(Commit&&) noexcept;
@@ -34,5 +34,6 @@ namespace Macarons
 
 	private:
 		git_commit* m_Commit;
+		const Branch* m_Branch;
 	};
 }

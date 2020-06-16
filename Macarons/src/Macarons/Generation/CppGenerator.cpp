@@ -3,27 +3,38 @@
 
 namespace Macarons
 {
-	/*CppGenerator::CppGenerator(const Repository& repo) : m_Repository{ repo }
+	CppGenerator::CppGenerator(const Repository& repo) : Generator::Generator(repo)
 	{
-	}*/
-
-	std::string CppGenerator::GetGeneratorName() const
-	{
-		return "cpp";
 	}
 
-	std::string CppGenerator::GetGeneratorDisplayName() const
+	std::string CppGenerator::GetName() const
+	{
+		return "cpp-generator";
+	}
+
+	std::string CppGenerator::GetDisplayName() const
 	{
 		return "C++ Header Generator";
 	}
 
 	std::unordered_set<std::string> CppGenerator::GetSupportedFileExtensions() const
 	{
-		return { "h", "hpp" };
+		return { "h", "hpp", "hxx" };
 	}
 
 	std::string CppGenerator::Generate()
 	{
-		return std::string();
+		std::stringstream ss;
+
+		ss << "#pragma once";
+
+		ss << "#define MACARONS_VER_LONG" << '\n';
+		ss << "#define MACARONS_VER_SHORT" << '\n';
+
+		ss << "#define MACARONS_VER_MAJOR" << '\n';
+		ss << "#define MACARONS_VER_MINOR" << '\n';
+		ss << "#define MACARONS_VER_PATCH" << '\n';
+
+		return ss.str();
 	}
 }

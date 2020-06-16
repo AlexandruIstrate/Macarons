@@ -14,8 +14,8 @@ namespace Macarons
 
 		inline const Repository& GetRepository() const { return m_Repository; }
 
-		virtual std::string GetGeneratorName() const = 0;
-		virtual std::string GetGeneratorDisplayName() const = 0;
+		virtual std::string GetName() const = 0;
+		virtual std::string GetDisplayName() const = 0;
 		virtual std::unordered_set<std::string> GetSupportedFileExtensions() const = 0;
 
 		virtual std::string Generate() = 0;

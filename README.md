@@ -1,7 +1,9 @@
 # Macarons
 Macarons is a tool that allows you to generate a header file with version data pulled from the Git repository located in the solution. This is particularly useful because you can have the version of your app automatically available inside of your code.
 
-This tool is a portable executable that you can invoke in your post-build step to generate the header with version information.
+This tool is a portable executable that you can invoke in your pre-build step to generate the header with version information.
+
+![Branding Image](Resources/Branding/Macarons_Logo_WordArt.png)
 
 ## Example Usage
 
@@ -62,3 +64,6 @@ git clone --recursive https://github.com/AlexandruIstrate/Macarons
 ```
 
 Make sure to use the ```--recursive``` flag to fetch all of the submodules!
+
+## Disclaimer
+- The main image is made using [WordArt.com](https://wordart.com)

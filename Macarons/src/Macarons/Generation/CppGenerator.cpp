@@ -3,7 +3,7 @@
 
 namespace Macarons
 {
-	CppGenerator::CppGenerator(const Repository& repo) : Generator::Generator(repo)
+	CppGenerator::CppGenerator(const VersionCompiler<int>& versionCompiler)
 	{
 	}
 

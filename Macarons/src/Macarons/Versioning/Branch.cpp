@@ -12,6 +12,31 @@ namespace Macarons
 	{
 	}
 
+	std::string Branch::GetDisplayName() const
+	{
+		std::string name = GetName();
+
+		// Erase the heads prefix
+		std::string toErase = "refs/heads/";
+		size_t found = name.find(toErase);
+
+		if (found != std::string::npos)
+		{
+			return name.erase(found, toErase.length());
+		}
+
+		// Erase the remotes prefix
+		toErase = "refs/remotes/";
+		found = name.find(toErase);
+
+		if (found != std::string::npos)
+		{
+			return name.erase(found, toErase.length());
+		}
+
+		return name;
+	}
+
 	bool Branch::IsActive() const
 	{
 		return git_branch_is_head(m_Reference);
@@ -24,11 +49,17 @@ namespace Macarons
 		return (git_branch_upstream(&remote, m_Reference) == GIT_ERROR_NONE);
 	}
 
-	Branch Branch::GetUpstream() const
+	std::optional<Branch> Branch::GetUpstream() const
 	{
 		git_reference* upstream;
 
 		int result = git_branch_upstream(&upstream, m_Reference);
+
+		if (result == GIT_ENOTFOUND)
+		{
+			return std::nullopt;
+		}
+
 		MR_CORE_ASSERT(result == GIT_ERROR_NONE, "Could not retrieve upstream branch");
 
 		return Branch(upstream, BranchType::Remote, m_Repository);
@@ -114,5 +145,27 @@ namespace Macarons
 		git_signature_free(user);
 
 		return Commit(commit, this);
+	}
+
+	void Branch::Reset(bool hard)
+	{
+		std::vector<Commit> commits = GetCommits();
+
+		if (commits.empty())
+		{
+			return;
+		}
+
+		git_commit* lastCommit = commits.back().m_Commit;
+
+		if (hard)
+		{
+			git_checkout_options opts;
+			git_reset(m_Repository.m_Repo, (git_object*)lastCommit, GIT_RESET_HARD, &opts);
+		}
+		else
+		{
+			git_reset(m_Repository.m_Repo, (git_object*)lastCommit, GIT_RESET_MIXED, nullptr);
+		}
 	}
 }

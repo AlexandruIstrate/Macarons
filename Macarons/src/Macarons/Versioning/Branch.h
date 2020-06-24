@@ -2,6 +2,8 @@
 
 #include "Reference.h"
 
+#include <optional>
+
 namespace Macarons
 {
 	class Commit;
@@ -30,10 +32,12 @@ namespace Macarons
 		inline BranchType GetBranchType() const { return m_BranchType; }
 		inline const Repository& GetRepository() const { return m_Repository; }
 
+		std::string GetDisplayName() const;
+
 		bool IsActive() const;
 		bool IsTrackingRemote() const;
 
-		Branch GetUpstream() const;
+		std::optional<Branch> GetUpstream() const;
 		void SetUpstream(const Branch& upstream);
 
 		std::vector<Commit> GetCommits() const;

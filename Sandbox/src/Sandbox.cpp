@@ -7,11 +7,14 @@ int main()
 	// TODO: Move to the core
 	Log::Init();
 
-	Repository repo("Path");
+	Repository repo("Path here");
 	
 	for (const Branch& branch : repo.GetBranches(BranchType::Remote))
 	{
-		//MR_INFO("---------- Branch {0}; Active {1} ----------\n", branch.GetName(), branch.IsActive());
+		auto upstream = branch.GetUpstream();
+		const std::string& name = upstream.has_value() ? upstream->GetDisplayName() : "Not Available";
+
+		MR_INFO("---------- Branch {0}; Active {1}; Upstream {2} ----------\n", branch.GetName(), branch.IsActive(), name);
 
 		for (const Commit& commit : branch.GetCommits())
 		{
@@ -23,4 +26,7 @@ int main()
 			}
 		}
 	}
+
+	GitFlowCompiler comp(repo);
+	MR_INFO("Major version {0}", comp.GetMajorVersion());
 }

@@ -5,6 +5,15 @@
 
 namespace Macarons
 {
+	enum class GitFlowBranchType
+	{
+		Default = 0,
+		Master,
+		Develop,
+		Feature,
+		Release
+	};
+
 	class GitFlowCompiler : public VersionCompiler<int>
 	{
 	public:
@@ -16,6 +25,9 @@ namespace Macarons
 		virtual int GetMajorVersion() const override;
 		virtual int GetMinorVersion() const override;
 		virtual int GetPatchVersion() const override;
+
+	private:
+		static GitFlowBranchType GetBranchType(const Branch& branch);
 
 	private:
 		Repository m_Repository;

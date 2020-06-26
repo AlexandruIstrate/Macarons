@@ -8,8 +8,6 @@ namespace Macarons
 	public:
 		virtual ~VersionCompiler() {}
 
-		virtual TVersionData GetMajorVersion() const = 0;
-		virtual TVersionData GetMinorVersion() const = 0;
-		virtual TVersionData GetPatchVersion() const = 0;
+		virtual TVersionData GetVersion() const = 0;
 	};
 }

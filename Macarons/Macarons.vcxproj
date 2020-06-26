@@ -138,6 +138,7 @@
     <ClInclude Include="src\Macarons.h" />
     <ClInclude Include="src\Macarons\Core\Base.h" />
     <ClInclude Include="src\Macarons\Core\Log.h" />
+    <ClInclude Include="src\Macarons\Core\SemanticVersion.h" />
     <ClInclude Include="src\Macarons\Generation\CppGenerator.h" />
     <ClInclude Include="src\Macarons\Generation\Generator.h" />
     <ClInclude Include="src\Macarons\Generation\GitFlowCompiler.h" />
@@ -151,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Macarons\Core\Log.cpp" />
+    <ClCompile Include="src\Macarons\Core\SemanticVersion.cpp" />
     <ClCompile Include="src\Macarons\Generation\CppGenerator.cpp" />
     <ClCompile Include="src\Macarons\Generation\GitFlowCompiler.cpp" />
     <ClCompile Include="src\Macarons\Versioning\Branch.cpp" />

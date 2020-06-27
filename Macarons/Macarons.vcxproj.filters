@@ -29,6 +29,7 @@
     <ClInclude Include="src\Macarons\Generation\CppGenerator.h" />
     <ClInclude Include="src\Macarons\Generation\VersionCompiler.h" />
     <ClInclude Include="src\Macarons\Generation\GitFlowCompiler.h" />
+    <ClInclude Include="src\Macarons\Core\SemanticVersion.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Macarons\Core\Log.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Macarons\Versioning\Tag.cpp" />
     <ClCompile Include="src\Macarons\Generation\CppGenerator.cpp" />
     <ClCompile Include="src\Macarons\Generation\GitFlowCompiler.cpp" />
+    <ClCompile Include="src\Macarons\Core\SemanticVersion.cpp" />
   </ItemGroup>
 </Project>

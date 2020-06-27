@@ -9,23 +9,13 @@ namespace Macarons
 	{
 	}
 
-	int GitFlowCompiler::GetMajorVersion() const
+	SemanticVersion GitFlowCompiler::GetVersion() const
 	{
 		const Branch& currentBranch = m_Repository.GetActiveBranch();
 
 		GitFlowBranchType type = GetBranchType(currentBranch);
 		MR_CORE_INFO("Active branch type ({0}) {1}", currentBranch.GetDisplayName(), type);
 
-		throw std::logic_error("The method or operation is not implemented.");
-	}
-
-	int GitFlowCompiler::GetMinorVersion() const
-	{
-		throw std::logic_error("The method or operation is not implemented.");
-	}
-
-	int GitFlowCompiler::GetPatchVersion() const
-	{
 		throw std::logic_error("The method or operation is not implemented.");
 	}
 

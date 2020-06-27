@@ -1,6 +1,7 @@
 #pragma once
 
 #include "VersionCompiler.h"
+#include "Macarons/Core/SemanticVersion.h"
 #include "Macarons/Versioning/Repository.h"
 
 namespace Macarons
@@ -14,7 +15,7 @@ namespace Macarons
 		Release
 	};
 
-	class GitFlowCompiler : public VersionCompiler<int>
+	class GitFlowCompiler : public VersionCompiler<SemanticVersion>
 	{
 	public:
 		GitFlowCompiler(const Repository& repository);
@@ -22,9 +23,7 @@ namespace Macarons
 		inline const Repository& GetRepository() const { return m_Repository; }
 		inline void SetRepository(const Repository& repo) { m_Repository = repo; }
 
-		virtual int GetMajorVersion() const override;
-		virtual int GetMinorVersion() const override;
-		virtual int GetPatchVersion() const override;
+		virtual SemanticVersion GetVersion() const override;
 
 	private:
 		static GitFlowBranchType GetBranchType(const Branch& branch);

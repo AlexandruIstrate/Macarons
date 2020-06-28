@@ -26,9 +26,16 @@ namespace Macarons
 		virtual SemanticVersion GetVersion() const override;
 
 	private:
+		void Initialize();
+
+	private:
 		static GitFlowBranchType GetBranchType(const Branch& branch);
 
 	private:
 		Repository m_Repository;
+
+		std::optional<Branch> m_Master;
+		std::optional<Branch> m_Develop;
+		std::vector<Branch> m_Features;
 	};
 }

@@ -1,22 +1,75 @@
 #include "mrpch.h"
 #include "GitFlowCompiler.h"
 
+#include "Macarons/Versioning/Commit.h"
+
 #include <regex>
 
 namespace Macarons
 {
 	GitFlowCompiler::GitFlowCompiler(const Repository& repository) : m_Repository{ repository }
 	{
+		Initialize();
 	}
 
 	SemanticVersion GitFlowCompiler::GetVersion() const
 	{
-		const Branch& currentBranch = m_Repository.GetActiveBranch();
+		// Figure out the major version using the master branch
+		for (const Commit& commit : m_Master->GetCommits())
+		{
+			// Get the tags
+			std::vector<Tag> tags = commit.GetTags();
 
-		GitFlowBranchType type = GetBranchType(currentBranch);
-		MR_CORE_INFO("Active branch type ({0}) {1}", currentBranch.GetDisplayName(), type);
+			for (const Tag& tag : tags)
+			{
+				const std::string& tagName = tag.GetName();
 
-		throw std::logic_error("The method or operation is not implemented.");
+				std::regex versionRegex("*.*.*");
+				std::smatch match;
+
+				if (std::regex_search(tagName.begin(), tagName.end(), match, versionRegex))
+				{
+					std::string version = match[1];
+					return SemanticVersion(1, 0, 0);
+				}
+			}
+		}
+
+		return SemanticVersion(1, 0, 0);
+	}
+
+	void GitFlowCompiler::Initialize()
+	{
+		for (const Branch& branch : m_Repository.GetBranches(BranchType::Local))
+		{
+			switch (GetBranchType(branch))
+			{
+			case GitFlowBranchType::Master:
+				m_Master.emplace(branch);
+				break;
+
+			case GitFlowBranchType::Develop:
+				m_Develop.emplace(branch);
+				break;
+
+			case GitFlowBranchType::Feature:
+				m_Features.push_back(branch);
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		if (!m_Master)
+		{
+			throw std::exception("Master branch does not exist");
+		}
+
+		if (!m_Develop)
+		{
+			throw std::exception("Develop branch does not exist");
+		}
 	}
 
 	GitFlowBranchType GitFlowCompiler::GetBranchType(const Branch& branch)

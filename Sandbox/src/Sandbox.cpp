@@ -28,5 +28,7 @@ int main()
 	}
 
 	GitFlowCompiler comp(repo);
-	MR_INFO("Major version {0}", comp.GetMajorVersion());
+	SemanticVersion version = comp.GetVersion();
+
+	MR_INFO("Repository is at version {0}.{1}.{2}", version.GetMajor(), version.GetMinor(), version.GetPatch());
 }

@@ -7,6 +7,9 @@
     <Filter Include="Macarons\Core">
       <UniqueIdentifier>{F1C7D866-5D88-549D-26C3-9D1A92429979}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Macarons\Generation">
+      <UniqueIdentifier>{9489F408-00EB-D116-8958-18C9F5B808D6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Macarons\Versioning">
       <UniqueIdentifier>{8C4F4518-F8B0-2226-811E-69D8ED7E59E5}</UniqueIdentifier>
     </Filter>
@@ -19,30 +22,72 @@
     <ClInclude Include="src\Macarons\Core\Log.h">
       <Filter>Macarons\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Macarons\Core\SemanticVersion.h">
+      <Filter>Macarons\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Generation\CppGenerator.h">
+      <Filter>Macarons\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Generation\Generator.h">
+      <Filter>Macarons\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Generation\GitFlowCompiler.h">
+      <Filter>Macarons\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Generation\VersionCompiler.h">
+      <Filter>Macarons\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Generation\YamlCompiler.h">
+      <Filter>Macarons\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Versioning\Branch.h">
+      <Filter>Macarons\Versioning</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Versioning\Commit.h">
+      <Filter>Macarons\Versioning</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Versioning\Reference.h">
+      <Filter>Macarons\Versioning</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Versioning\Repository.h">
+      <Filter>Macarons\Versioning</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macarons\Versioning\Tag.h">
+      <Filter>Macarons\Versioning</Filter>
+    </ClInclude>
     <ClInclude Include="src\mrpch.h" />
-    <ClInclude Include="src\Macarons\Versioning\Reference.h" />
-    <ClInclude Include="src\Macarons\Versioning\Repository.h" />
-    <ClInclude Include="src\Macarons\Versioning\Branch.h" />
-    <ClInclude Include="src\Macarons\Versioning\Commit.h" />
-    <ClInclude Include="src\Macarons\Versioning\Tag.h" />
-    <ClInclude Include="src\Macarons\Generation\Generator.h" />
-    <ClInclude Include="src\Macarons\Generation\CppGenerator.h" />
-    <ClInclude Include="src\Macarons\Generation\VersionCompiler.h" />
-    <ClInclude Include="src\Macarons\Generation\GitFlowCompiler.h" />
-    <ClInclude Include="src\Macarons\Core\SemanticVersion.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Macarons\Core\Log.cpp">
       <Filter>Macarons\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Macarons\Core\SemanticVersion.cpp">
+      <Filter>Macarons\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Generation\CppGenerator.cpp">
+      <Filter>Macarons\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Generation\GitFlowCompiler.cpp">
+      <Filter>Macarons\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Generation\YamlCompiler.cpp">
+      <Filter>Macarons\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Versioning\Branch.cpp">
+      <Filter>Macarons\Versioning</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Versioning\Commit.cpp">
+      <Filter>Macarons\Versioning</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Versioning\Reference.cpp">
+      <Filter>Macarons\Versioning</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Versioning\Repository.cpp">
+      <Filter>Macarons\Versioning</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Macarons\Versioning\Tag.cpp">
+      <Filter>Macarons\Versioning</Filter>
+    </ClCompile>
     <ClCompile Include="src\mrpch.cpp" />
-    <ClCompile Include="src\Macarons\Versioning\Reference.cpp" />
-    <ClCompile Include="src\Macarons\Versioning\Repository.cpp" />
-    <ClCompile Include="src\Macarons\Versioning\Branch.cpp" />
-    <ClCompile Include="src\Macarons\Versioning\Commit.cpp" />
-    <ClCompile Include="src\Macarons\Versioning\Tag.cpp" />
-    <ClCompile Include="src\Macarons\Generation\CppGenerator.cpp" />
-    <ClCompile Include="src\Macarons\Generation\GitFlowCompiler.cpp" />
-    <ClCompile Include="src\Macarons\Core\SemanticVersion.cpp" />
   </ItemGroup>
 </Project>

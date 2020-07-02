@@ -6,7 +6,7 @@ namespace Macarons
 	class VersionCompiler
 	{
 	public:
-		virtual ~VersionCompiler() {}
+		virtual ~VersionCompiler() = default;
 
 		virtual TVersionData GetVersion() const = 0;
 	};

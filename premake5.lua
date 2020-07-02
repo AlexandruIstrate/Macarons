@@ -21,7 +21,8 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- IncludeDir["libgit2"] = "Macarons/vendor/libgit2/include"
 
 group "Dependencies"
-	include "Macarons/vendor/libgit2"
+    include "Macarons/vendor/libgit2"
+    include "Macarons/vendor/yaml-cpp"
 
 group ""
 
@@ -48,12 +49,14 @@ project "Macarons"
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{prj.name}/vendor/libgit2/include"
+        "%{prj.name}/vendor/libgit2/include",
+        "%{prj.name}/vendor/yaml-cpp/include"
     }
 
     links
     {
-        "libgit2"
+        "libgit2",
+        "yaml-cpp"
     }
 
     filter "system:windows"

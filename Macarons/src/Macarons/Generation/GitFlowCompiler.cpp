@@ -24,7 +24,7 @@ namespace Macarons
 			{
 				const std::string& tagName = tag.GetName();
 
-				std::regex versionRegex("^(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$");
+				std::regex versionRegex(R"(^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[a-zA-Z\d][-a-zA-Z.\d]*)?(\+[a-zA-Z\d][-a-zA-Z.\d]*)?$)");
 				std::smatch match;
 
 				if (std::regex_search(tagName.begin(), tagName.end(), match, versionRegex))
@@ -40,20 +40,20 @@ namespace Macarons
 
 	void GitFlowCompiler::Initialize()
 	{
-		for (const Branch& branch : m_Repository.GetBranches(BranchType::Local))
+		for (Branch& branch : m_Repository.GetBranches(BranchType::Local))
 		{
 			switch (GetBranchType(branch))
 			{
 			case GitFlowBranchType::Master:
-				m_Master.emplace(branch);
+				m_Master.emplace(std::move(branch));
 				break;
 
 			case GitFlowBranchType::Develop:
-				m_Develop.emplace(branch);
+				m_Develop.emplace(std::move(branch));
 				break;
 
 			case GitFlowBranchType::Feature:
-				m_Features.push_back(branch);
+				m_Features.push_back(std::move(branch));
 				break;
 
 			default:
@@ -61,12 +61,12 @@ namespace Macarons
 			}
 		}
 
-		if (!m_Master)
+		if (!m_Master.has_value())
 		{
 			throw std::exception("Master branch does not exist");
 		}
 
-		if (!m_Develop)
+		if (!m_Develop.has_value())
 		{
 			throw std::exception("Develop branch does not exist");
 		}

@@ -4,3 +4,6 @@
 [submodule "Macarons/vendor/libgit2"]
 	path = Macarons/vendor/libgit2
 	url = https://github.com/libgit2/libgit2
+[submodule "Macarons/vendor/yaml-cpp"]
+	path = Macarons/vendor/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp/

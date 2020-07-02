@@ -12,4 +12,5 @@
 #include "Macarons/Generation/Generator.h"
 #include "Macarons/Generation/CppGenerator.h"
 #include "Macarons/Generation/VersionCompiler.h"
+#include "Macarons/Generation/YamlCompiler.h"
 #include "Macarons/Generation/GitFlowCompiler.h"

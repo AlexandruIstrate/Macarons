@@ -8,13 +8,11 @@
 
 namespace YAML
 {
-	class Parser;
+	class Node;
 }
 
 namespace Macarons
 {
-	class MacaronsYamlEventHandler;
-
 	class YamlCompiler : public VersionCompiler<SemanticVersion>
 	{
 	public:
@@ -31,7 +29,6 @@ namespace Macarons
 
 	private:
 		std::string m_YamlFilePath;
-		std::unique_ptr<YAML::Parser> m_Parser;
-		std::unique_ptr<MacaronsYamlEventHandler> m_EventHandler;
+		std::unique_ptr<YAML::Node> m_RootNode;
 	};
 }

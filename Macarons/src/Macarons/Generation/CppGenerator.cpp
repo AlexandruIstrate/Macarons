@@ -3,7 +3,7 @@
 
 namespace Macarons
 {
-	CppGenerator::CppGenerator(const VersionCompiler<int>& versionCompiler)
+	CppGenerator::CppGenerator(VersionCompiler<SemanticVersion>* versionCompiler) : m_Compiler { versionCompiler }
 	{
 	}
 
@@ -24,16 +24,27 @@ namespace Macarons
 
 	std::string CppGenerator::Generate()
 	{
+		SemanticVersion version = m_Compiler->GetVersion();
+
 		std::stringstream ss;
+		ss << "#pragma once" << '\n';
 
-		ss << "#pragma once";
+		if (HasFlag(VersionMajorMinorPatch))
+		{
+			ss << "#define MACARONS_VER_MAJOR " << version.GetMajor() << '\n';
+			ss << "#define MACARONS_VER_MINOR " << version.GetMinor() << '\n';
+			ss << "#define MACARONS_VER_PATCH " << version.GetPatch() << '\n';
+		}
 
-		ss << "#define MACARONS_VER_LONG" << '\n';
-		ss << "#define MACARONS_VER_SHORT" << '\n';
+		if (HasFlag(VersionShort))
+		{
+			ss << "#define MACARONS_VER_SHORT" << version.ToString() << '\n';
+		}
 
-		ss << "#define MACARONS_VER_MAJOR" << '\n';
-		ss << "#define MACARONS_VER_MINOR" << '\n';
-		ss << "#define MACARONS_VER_PATCH" << '\n';
+		if (HasFlag(VersionLong))
+		{
+			ss << "#define MACARONS_VER_LONG" << '\n';
+		}
 
 		return ss.str();
 	}

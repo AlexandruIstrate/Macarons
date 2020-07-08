@@ -16,10 +16,6 @@ workspace "Macarons"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
--- Include directories relative to root folder (solution directory)
--- IncludeDir = {}
--- IncludeDir["libgit2"] = "Macarons/vendor/libgit2/include"
-
 group "Dependencies"
     include "Macarons/vendor/libgit2"
     include "Macarons/vendor/yaml-cpp"
@@ -95,9 +91,11 @@ project "Sandbox"
     
     includedirs
     {
+        "%{prj.name}/src",
+        "%{prj.name}/vendor/clipp/include",
         "Macarons/vendor/spdlog/include",
 		"Macarons/src",
-		"Macarons/vendor"
+        "Macarons/vendor"
     }
 
     links

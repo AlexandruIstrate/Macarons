@@ -7,3 +7,6 @@
 [submodule "Macarons/vendor/yaml-cpp"]
 	path = Macarons/vendor/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp/
+[submodule "Sandbox/vendor/clipp"]
+	path = Sandbox/vendor/clipp
+	url = https://github.com/muellan/clipp

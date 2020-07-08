@@ -1,14 +1,9 @@
-#include "Macarons.h"
+#include "Sandbox/Core/Base.h"
 
-int main()
+using namespace Macarons;
+
+int main(int argc, char* argv[])
 {
-	using namespace Macarons;
-
-	// TODO: Move to the core
+	// Initialize the log
 	Log::Init();
-
-	YamlCompiler* compiler = new YamlCompiler("Path here");
-	std::unique_ptr<CppGenerator> generator = std::make_unique<CppGenerator>(compiler);
-
-	MR_CORE_INFO("Generated {0}", generator->Generate());
 }

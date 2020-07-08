@@ -16,7 +16,7 @@ namespace Macarons
 			return BranchType::Remote;
 
 		default:
-			MR_CORE_ASSERT(false, "Unsuported branch type")
+			MR_CORE_ASSERT(false, "Unsuported branch type");
 		}
 	}
 

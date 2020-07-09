@@ -21,7 +21,8 @@ namespace Sandbox
 	std::string OutputWriter::PrintVersion(const std::string& version, const std::string& appName, const std::string& copyright) const
 	{
 		std::stringstream ss;
-		ss << appName << " (" << version << ") " << copyright;
+		ss << appName << '[' << version << ']' << '\n';
+		ss << copyright << '\n';
 		return ss.str();
 	}
 }

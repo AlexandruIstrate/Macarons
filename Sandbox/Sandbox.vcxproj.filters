@@ -18,11 +18,13 @@
     <ClInclude Include="src\Sandbox\Core\Base.h">
       <Filter>Sandbox\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Sandbox\Command\OutputWriter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Sandbox.cpp" />
     <ClCompile Include="src\Sandbox\Command\CommandParser.cpp">
       <Filter>Sandbox\Command</Filter>
     </ClCompile>
+    <ClCompile Include="src\Sandbox\Command\OutputWriter.cpp" />
   </ItemGroup>
 </Project>

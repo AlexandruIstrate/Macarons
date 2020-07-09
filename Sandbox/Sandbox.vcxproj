@@ -136,11 +136,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Sandbox\Command\CommandParser.h" />
+    <ClInclude Include="src\Sandbox\Command\OutputWriter.h" />
     <ClInclude Include="src\Sandbox\Core\Base.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Sandbox.cpp" />
     <ClCompile Include="src\Sandbox\Command\CommandParser.cpp" />
+    <ClCompile Include="src\Sandbox\Command\OutputWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Macarons\Macarons.vcxproj">

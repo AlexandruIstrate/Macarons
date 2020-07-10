@@ -29,6 +29,10 @@ namespace Macarons
 		std::stringstream ss;
 		ss << "#pragma once" << '\n';
 
+		ss << '\n';
+		ss << "// This file was generated using Macarons (https://github.com/AlexandruIstrate/Macarons)" << '\n';
+		ss << '\n';
+
 		if (HasFlag(VersionMajorMinorPatch))
 		{
 			ss << "#define MACARONS_VER_MAJOR " << version.GetMajor() << '\n';
@@ -38,12 +42,12 @@ namespace Macarons
 
 		if (HasFlag(VersionShort))
 		{
-			ss << "#define MACARONS_VER_SHORT" << version.ToString() << '\n';
+			ss << "#define MACARONS_VER_SHORT " << version.ToString() << '\n';
 		}
 
 		if (HasFlag(VersionLong))
 		{
-			ss << "#define MACARONS_VER_LONG" << '\n';
+			ss << "#define MACARONS_VER_LONG " << '\n';
 		}
 
 		return ss.str();

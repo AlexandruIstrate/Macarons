@@ -1,5 +1,7 @@
 #include "Sandbox/Core/Base.h"
 
+#include <fstream>
+
 using namespace Macarons;
 using namespace Sandbox;
 
@@ -22,20 +24,31 @@ int main(int argc, char* argv[])
 
 void HandleExecution(const CommandLineOptions& opts, const OutputWriter& writer)
 {
-	std::unique_ptr<VersionCompiler<SemanticVersion>> vc;
+	VersionCompiler<SemanticVersion>* vc;
 
 	if (opts.FilePath)
 	{
 		// Handle the version file
+		vc = new YamlCompiler(opts.FilePath.value());
 	}
-	else if (opts.RepoPath)
+	else
 	{
+		// Read the repository
+		Repository* repo = new Repository(opts.RepoPath.value());
+
 		// Get the information from the repository
+		vc = new GitFlowCompiler(repo);
 	}
 
 	// Generate the file
-	CppGenerator gen(vc.get());
-	gen.Generate();
+	CppGenerator gen(vc);
+	gen.SetGenerationFlags(VersionMajorMinorPatch | VersionLong | VersionShort);
+
+	const std::string& result = gen.Generate();
+
+	std::ofstream file(opts.OutputPath);
+	file << result;
+	file.flush();
 }
 
 void HandleHelp(const CommandLineOptions& opts, const OutputWriter& writer)

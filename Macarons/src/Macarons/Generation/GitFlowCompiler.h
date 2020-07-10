@@ -18,10 +18,7 @@ namespace Macarons
 	class GitFlowCompiler : public VersionCompiler<SemanticVersion>
 	{
 	public:
-		GitFlowCompiler(const Repository& repository);
-
-		inline const Repository& GetRepository() const { return m_Repository; }
-		inline void SetRepository(const Repository& repo) { m_Repository = repo; }
+		GitFlowCompiler(Repository* repository);
 
 		virtual SemanticVersion GetVersion() const override;
 
@@ -32,7 +29,7 @@ namespace Macarons
 		static GitFlowBranchType GetBranchType(const Branch& branch);
 
 	private:
-		Repository m_Repository;
+		std::unique_ptr<Repository> m_Repository;
 
 		std::optional<Branch> m_Master;
 		std::optional<Branch> m_Develop;

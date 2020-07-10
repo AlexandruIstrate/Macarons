@@ -7,7 +7,7 @@
 
 namespace Macarons
 {
-	GitFlowCompiler::GitFlowCompiler(const Repository& repository) : m_Repository{ repository }
+	GitFlowCompiler::GitFlowCompiler(Repository* repository) : m_Repository{ repository }
 	{
 		Initialize();
 	}
@@ -40,7 +40,7 @@ namespace Macarons
 
 	void GitFlowCompiler::Initialize()
 	{
-		for (Branch& branch : m_Repository.GetBranches(BranchType::Local))
+		for (Branch& branch : m_Repository->GetBranches(BranchType::Local))
 		{
 			switch (GetBranchType(branch))
 			{
